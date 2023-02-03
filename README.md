@@ -53,25 +53,25 @@ Repository for code required for the analysis of fishing activity by trawler ves
     
 This section transforms the raw VMS locations with logbooks indicators (tacsatEflalo) into an aggregated dataset with the following structure: 
     
-#### Categories for aggregation: 
+#### Categories for aggregation  
     
-    - Year: Temporal resolution of the final output . 
-    - Quarter: Temporal resolution of the final output. 
-    
-    - C-Square 0.05: Represents the spatial resolution of the aggregated output. The resolution will enable high resolution analysis but preserving the anonymity of individual vessels activity . 
-        
-    - Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enable the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments 
-    - Country: GBR  or EU ( or individual member states ) . To analyse the fishing activity by fleet country . 
+   - Year: Temporal resolution of the final output . 
+   - Quarter: Temporal resolution of the final output. 
+
+   - C-Square 0.05: Represents the spatial resolution of the aggregated output. The resolution will enable high resolution analysis but preserving the anonymity of individual vessels activity . 
+
+   - Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enable the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments 
+   - Country: GBR  or EU ( or individual member states ) . To analyse the fishing activity by fleet country . 
     
 #### Fishing activity indicators by category:
     
-    - effort: Total fishing effort (in hours)  by aggregation category
-    - effort*kwh: Total fishing effort (in hours) * engine power (kwh)  by aggregation category
-    - kg_cod/others: Total cod/others weight (kg) captured by above category
-    - val_cod/others: Total cod/others 1st sales value (euro) by above category
-    - avg_len:  Average length of the vessels by aggregation category
-    - avg_sp:  Average fishing speeds of the vessels by aggregation category
-        
+   - effort: Total fishing effort (in hours)  by aggregation category
+   - effort*kwh: Total fishing effort (in hours) * engine power (kwh)  by aggregation category
+   - kg_cod/others: Total cod/others weight (kg) captured by above category
+   - val_cod/others: Total cod/others 1st sales value (euro) by above category
+   - avg_len:  Average length of the vessels by aggregation category
+   - avg_sp:  Average fishing speeds of the vessels by aggregation category
+
         
  #### 3.2 Aggregate the data by defined categories and create the final output
     
