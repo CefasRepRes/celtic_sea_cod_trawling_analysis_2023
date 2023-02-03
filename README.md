@@ -41,10 +41,10 @@ Repository for the analysis of fishing activity related to trawler vessels  capt
     
     
     
-  ###  1. Separate logbook records with and without associated VMS position records 
+  ####  1. Separate logbook records with and without associated VMS position records 
   
   
-  ###  2. Link Logbook and relted VMS locations. Apportion landing values by VMS locations using "splitamongpings" function in VMSTool Package 
+  ####  2. Link Logbook and relted VMS locations. Apportion landing values by VMS locations using "splitamongpings" function in VMSTool Package 
   
   
     
