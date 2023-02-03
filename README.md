@@ -73,5 +73,5 @@ This section transforms the raw VMS locations with logbooks indicators (tacsatEf
         - avg_sp:  Average fishing speeds of the vessels by aggregation category
         
         
- ### 3.2 Aggregate the data by defined categories and create the final output
+ #### 3.2 Aggregate the data by defined categories and create the final output
     
