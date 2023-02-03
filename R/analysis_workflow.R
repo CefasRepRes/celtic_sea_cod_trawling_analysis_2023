@@ -26,13 +26,13 @@ library(vmstools)
   ## - Area of Interest: 27.7e to 27.7.k
   ## - Time period: 2017 - 2021
   ## - Gear used: bottom otter trawler gears ( OTB, OT, OTT, PTB )
-  ## - Mesh size: 70 - 119 and over
+  ## - Mesh size range: The 2 mesh size categories ('70-99' & '100-119+')
 
 ## EFLALO data  must include fishing trips landing information by species captured : 
 
   ## - Total weight (kg) and value (euro) of landings by species landed 
   ## - The weight (LE_KG) and value (LE_EURO) fields must be present for cod (LE_KG_COD, LE_EURO_COD) and all the other species combined (LE_KG_OTHERS, LE_EURO_OTHERS)
-      ## - If these haven't been aggregated in advance, it is provided a code to obtain it in line 87 
+      ## - If these haven't been aggregated in advance, a code is provided to obtain it in line 87 
 
 
 
@@ -108,7 +108,7 @@ library(vmstools)
 
   ## 2. Load TACSAT data for trips with any cod landing
       ## The TACSAT loaded must be already QC with not VMS point on land or in port , etc. . 
-      ## VMS locations identified as fishign already flagged in field SI_STATE
+      ## VMS locations identified as fishing already flagged in field SI_STATE
 
     
   load (tacsat_ot_2017_2021.RData )
@@ -157,7 +157,7 @@ library(vmstools)
     
     
     
-  ## 2. Link Logbook and relted VMS locations. Apportion landing values by VMS locations using "splitamongpings" function in VMSTool Package   
+  ## 2. Link Logbook and related VMS locations. Apportion landing values by VMS locations using "splitamongpings" function in VMSTool Package   
     
     ## 2.1 Prepared EFLALO and TACASAT must be in data.frame format
     
@@ -194,7 +194,7 @@ library(vmstools)
     
     
     ## 2.3 Compare tacsataEflalo apportioned total weight results with EFLALOM totals weight
-      ## Analyse if the weight in logbooks has been trasnfered as expected into the VMS locations in tacsatEflalo dataframe
+      ## Analyse if the weight in logbooks has been transfered as expected into the VMS locations in tacsatEflalo dataframe
     
  
     tacsatEflalo%>%summarise(kg_cod = sum(LE_KG_COD, na.rm = T), kg_others = sum(LE_KG_OTHERS, na.rm = T)  )
@@ -220,7 +220,7 @@ library(vmstools)
     
         ## C-Square 0.05: Represents the spatial resolution of the aggregated output. The resolution will enable high resolution analysis but preserving the anonymity of individual vessels activity . 
         
-        ## Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enable the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments . 
+        ## Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enables the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments . 
         ## Country: GBR  or EU ( or individual member states ) . To analyse the fishing activity by fleet country . 
     
       
@@ -229,13 +229,13 @@ library(vmstools)
     
         ## effort: The total fishing effort (in hours) by above categories
         ## effort*kwh: The total fishing effort (in hours) * engine power (kwh) by above categories
-        ## mean_velen: 
+        ## mean_velen: The mean vessel length
         
-        ## tot_kg_cod
-        ## tot_val_cod
+        ## tot_kg_cod: Total catch of cod in kilos
+        ## tot_val_cod: Total value of cod in euros
     
-        ##  tot_kg_all
-        ## tot_val_all
+        ## tot_kg_all: Total catch of all species in kilos
+        ## tot_val_all: Total value of all species in euros
     
         ## cpue_cod ( kg/h ) 
         ## cpue_cod ( kg/Kwh ) 
