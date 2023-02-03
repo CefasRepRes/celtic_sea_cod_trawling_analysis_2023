@@ -65,7 +65,7 @@ This section transforms the raw VMS locations with logbooks indicators (tacsatEf
     
 #### Fishing activity indicators by category:
     
-   - effort: Total fishing effort (in hours)  by aggregation category
+   - **effort**: Total fishing effort (in hours)  by aggregation category
    - effort*kwh: Total fishing effort (in hours) * engine power (kwh)  by aggregation category
    - kg_cod/others: Total cod/others weight (kg) captured by above category
    - val_cod/others: Total cod/others 1st sales value (euro) by above category
