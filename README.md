@@ -1,6 +1,6 @@
 # Celtic Sea cod trawling activity analysis 2023
 
-Repository for the analysis of fishing activity related to trawler vessels  capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
+Repository for code required for the analysis of fishing activity by trawler vessels  capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
 
 > The analysis have been structured in the following sections and processes:
 
