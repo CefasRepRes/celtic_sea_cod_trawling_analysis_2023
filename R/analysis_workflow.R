@@ -41,27 +41,7 @@ library(vmstools)
   
   load (eflalo_ot_2017_2021.RData )
   
-  cc_o1 -> eflalo_ot_2017_2021
-  
-  eflalo_ot_2017_2021%>%dim()
-  names(eflalo_ot_2017_2021) = toupper(  names(eflalo_ot_2017_2021))
-  eflalo_ot_2017_2021 = eflalo_ot_2017_2021%>%select(-GEOM, -MESH_SIZE_RANGE)
-  
-  tacsat_o1 -> tacsat%>%dim()
-  names(tacsat) = toupper(  names(tacsat))
-  eflalo_ot_2017_2021$FT_REF = as.numeric(    eflalo_ot_2017_2021$FT_REF)
-  
-  
-  
-  
-  eflalo_cod = eflalo_cod%>%
-  pivot_wider(id_cols = c( FT_REF, VE_REF, LE_RECT, LE_DIV, LE_MET, LE_MSZ, LE_CDAT, LE_GEAR,
-                           VE_COU, FT_DHAR, FT_LHAR, FT_DCOU, FT_DDAT, FT_DTIME, FT_DDATIM, FT_LCOU,
-                           FT_LDAT, FT_LTIME, FT_LDATIM, VE_FLT, VE_KW, VE_TON, MESH_RANGE), 
-              names_from = c( LE_SPE), values_from = c( LE_KG, LE_EURO)) 
-  
-  
-  ## 1.2. Filter EFLALO only for  fishing trips with any COD captured 
+   ## 1.2. Filter EFLALO only for  fishing trips with any COD captured 
   
     # 1.2.1 select the trips id (ft_Ref) with COD landings reported
     
@@ -220,51 +200,53 @@ library(vmstools)
     
         ## C-Square 0.05: Represents the spatial resolution of the aggregated output. The resolution will enable high resolution analysis but preserving the anonymity of individual vessels activity . 
         
-        ## Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enables the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments . 
+        ## Mesh size range: The 2 mesh size categories ('70-99' & '100-119+') enable the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments . 
         ## Country: GBR  or EU ( or individual member states ) . To analyse the fishing activity by fleet country . 
     
-      
-      
       ## Fishing activity indicators by category:
     
-        ## effort: The total fishing effort (in hours) by above categories
-        ## effort*kwh: The total fishing effort (in hours) * engine power (kwh) by above categories
-        ## mean_velen: The mean vessel length
+        ## effort: Total fishing effort (in hours)  by aggregation category
+        ## effort*kwh: Total fishing effort (in hours) * engine power (kwh)  by aggregation category
+        ## kg_cod/others: Total cod/others weight (kg) captured by above category
+        ## val_cod/others: Total cod/others 1st sales value (euro) by above category
+        ## avg_len:  Average length of the vessels by aggregation category
+        ## avg_sp:  Average fishing speeds of the vessels by aggregation category
+    
         
-        ## tot_kg_cod: Total catch of cod in kilos
-        ## tot_val_cod: Total value of cod in euros
+    ##  3.1 Prepare the data prior aggregation
     
-        ## tot_kg_all: Total catch of all species in kilos
-        ## tot_val_all: Total value of all species in euros
-    
-        ## cpue_cod ( kg/h ) 
-        ## cpue_cod ( kg/Kwh ) 
-    
-        ## cumualtive_cpue: ( 0 - 1 ) 
-        ## cumualtive_tot_kg: ( 0 - 1 )
-        ## cumualtive_tot_val: ( 0 - 1 )
-    
-    tacsatEflalo = tacsatEflalo%>%filter(!is.na(LE_KG_COD)  & !is.na( LE_KG_OTHERS ))
-    tacsatEflalo = tacsatEflalo%>%filter(LE_KG_COD > 0  &   LE_KG_OTHERS  > 0 )
+      ## 3.1.1 Add the field with the id of the C-Square covering the area of each VMS location 
+      
+      tacsatEflalo$csquare   <- CSquare(tacsatEflalo$SI_LONG, tacsatEflalo$SI_LATI, degrees = 0.05)
+      
+      ## 3.1.2 Add the field with the quarter of the year for  aggregation 
+      
+      tacsatEflalo$si_year_q = lubridate::quarter(tacsatEflalo$SI_DATE)
+      
+      ## 3.1.3 Convert the field nams to lower case to facilitate further analysis coding 
+      
+      names(tacsatEflalo) = tolower(names(tacsatEflalo))
     
     
-    tacsatEflalo$csquare   <- CSquare(tacsatEflalo$SI_LONG, tacsatEflalo$SI_LATI, degrees = 0.05)
-    tacsatEflalo$si_year_q = lubridate::quarter(tacsatEflalo$SI_DATE)
-    names(tacsatEflalo) = tolower(names(tacsatEflalo))
+    ##  3.2 Aggregate the data by defined categories 
     
-    
-    
-    tacsatEflalo_sum =  tacsatEflalo%>%
-      group_by(si_year, si_year_q,  mesh_size_range,csquare,VE_COU  )%>%
-      summarise(avg_sp = mean(si_sp), 
-                effort_h = sum(intv), 
-                kg_cod = sum(le_kg_cod, na.rm = T), 
-                kg_others = sum(le_kg_others, na.rm = T), 
-                val_cod = sum(le_euro_cod, na.rm = T), 
-                val_others = sum(le_euro_others, na.rm = T), 
-      )%>%
-      filter(kg_cod > 0 & kg_others > 0 )
-    
-    
+    tacsat_eflalo_aggregated =  tacsatEflalo%>%
+                                group_by(si_year, si_year_q,csquare,  mesh_range,ve_cou  )%>%
+                                summarise(
+                                          avg_sp = mean(si_sp), 
+                                          #avg_len = mean(ve_len),
+                                          effort_h = sum(intv), 
+                                          effort_kwh = sum(intv*ve_kw),
+                                          kg_cod = sum(le_kg_cod, na.rm = T), 
+                                          kg_others = sum(le_kg_others, na.rm = T), 
+                                          val_cod = sum(le_euro_cod, na.rm = T), 
+                                          val_others = sum(le_euro_others, na.rm = T), 
+                                 ) %>%ungroup()
+
+      ## 3.3 Save the final outputs in a file to 
+      
+       country = tacsat_eflalo_aggregated%>%distinct(ve_cou)
+       save(tacsat_eflalo_aggregated, file = paste0("tacsat_eflalo_aggregated", country, ".RData") ) 
+
     
     
