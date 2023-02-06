@@ -78,8 +78,8 @@ library(vmstools)
     
     
     eflalo_cod =  eflalo_cod%>%
-                  mutate(LE_KG_OTHERS   = rowSums( select(., starts_with("LE_KG") , -"LE_KG_COD")    , na.rm = T ) ) %>%        ## rum across species le_kg except LE_KG_COD
-                  mutate(LE_EURO_OTHERS = rowSums( select(., starts_with("LE_EURO"), -"LE_EURO_COD") , na.rm = T ) ) %>%        ## rum across species le_euro except LE_EURO_COD
+                  mutate(LE_KG_OTHERS   = rowSums( select(., starts_with("LE_KG") , -"LE_KG_COD")    , na.rm = T ) ) %>%        ## run across species le_kg except LE_KG_COD
+                  mutate(LE_EURO_OTHERS = rowSums( select(., starts_with("LE_EURO"), -"LE_EURO_COD") , na.rm = T ) ) %>%        ## run across species le_euro except LE_EURO_COD
                   select( -starts_with("LE_EURO") , -starts_with( "LE_KG") , "LE_KG_COD","LE_EURO_COD","LE_KG_OTHERS", "LE_EURO_OTHERS"  ) %>%   
                   as.data.frame() 
     
