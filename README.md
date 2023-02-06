@@ -1,6 +1,6 @@
 # Celtic Sea cod trawling activity analysis 2023
 
-Repository for code required for the analysis of fishing activity by trawler vessels  capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
+Repository with the  code required for the analysis of fishing activity by trawler vessels capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
 
 > The analysis have been structured in the following sections and processes:
 
@@ -24,7 +24,7 @@ Repository for code required for the analysis of fishing activity by trawler ves
 
    - **Total weight (kg) and value (euro)** of landings by species landed 
    - The weight (LE_KG) and value (LE_EURO) fields must be present for cod (LE_KG_COD, LE_EURO_COD) and all the other species combined (LE_KG_OTHERS, LE_EURO_OTHERS)
-   - If these haven't been aggregated in advance, it is provided a code to obtain it in line 87 
+   - If these haven't been aggregated in advance, it is provided a code to obtain it 
 
 
 
