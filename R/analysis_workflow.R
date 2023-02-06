@@ -32,7 +32,7 @@ library(vmstools)
 
   ## - Total weight (kg) and value (euro) of landings by species landed 
   ## - The weight (LE_KG) and value (LE_EURO) fields must be present for cod (LE_KG_COD, LE_EURO_COD) and all the other species combined (LE_KG_OTHERS, LE_EURO_OTHERS)
-      ## - If these haven't been aggregated in advance, a code is provided to obtain it in line 87 
+      ## - If these haven't been aggregated in advance, a code is provided to obtain it in line 76
 
 
 
@@ -234,7 +234,7 @@ library(vmstools)
                                 group_by(si_year, si_year_q,csquare,  mesh_range,ve_cou  )%>%
                                 summarise(
                                           avg_sp = mean(si_sp), 
-                                          #avg_len = mean(ve_len),
+                                          avg_len = mean(ve_len),
                                           effort_h = sum(intv), 
                                           effort_kwh = sum(intv*ve_kw),
                                           kg_cod = sum(le_kg_cod, na.rm = T), 
