@@ -33,7 +33,7 @@ Repository with the  code required for the analysis of fishing activity by trawl
    
   
   
-###  Load and format EFLALO & TACSAT
+####  1. Load and format EFLALO & TACSAT
  
 ##  2. VMS & LOGBOOK LINKED ANALYSIS: COUPLE CATCHES TO VMS LOCATIONS  
  
