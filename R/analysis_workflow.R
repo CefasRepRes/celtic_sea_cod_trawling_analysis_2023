@@ -243,7 +243,7 @@ library(vmstools)
                                           val_others = sum(le_euro_others, na.rm = T), 
                                  ) %>%ungroup()
 
-      ## 3.3 Save the final outputs in a file to 
+      ## 3.3 Save final output in a csv file 
       
        country = 'GBR'   ## replace with the submitter country identifier
        write.csv(x = tacsat_eflalo_aggregated, file = paste0("tacsat_eflalo_aggregated", country, ".csv")  , row.names=FALSE)
