@@ -27,14 +27,13 @@ Repository with the  code required for the analysis of fishing activity by trawl
    - If these haven't been aggregated in advance, it is provided a code to obtain it 
 
 
-
-
-####  1. Load and format EFLALO
+#### TACSAT data must include the VMS for fishing trips selected using following criteria:
   
-####  2. Load TACSAT data for trips with any cod landing
-  
+   -  **TACSAT data related to EFLALO trips with any cod captured**: The TACSAT data must be extracted for the fishign trips wqith any cod landing already extracted for EFLALO. This will ensure teh TACSAT obtained follow same criteria than the fishing trips in EFLALO. 
+   
   
   
+###  Load and format EFLALO & TACSAT
  
 ##  2. VMS & LOGBOOK LINKED ANALYSIS: COUPLE CATCHES TO VMS LOCATIONS  
  
