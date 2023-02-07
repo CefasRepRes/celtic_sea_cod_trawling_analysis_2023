@@ -245,7 +245,7 @@ library(vmstools)
 
       ## 3.3 Save the final outputs in a file to 
       
-       country = tacsat_eflalo_aggregated%>%distinct(ve_cou)
+       country = 'GBR'   ## replace with the submitter country identifier
        save(tacsat_eflalo_aggregated, file = paste0("tacsat_eflalo_aggregated", country, ".RData") ) 
 
     
