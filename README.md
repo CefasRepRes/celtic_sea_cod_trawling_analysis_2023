@@ -18,7 +18,7 @@ Repository with the  code required for the analysis of fishing activity by trawl
    - **Area of Interest**: 27.7e to 27.7.
    - **Time period**: 2017 - 2021
    - **Gear**: bottom otter trawler gears ( OTB, OT, OTT, PTB )
-   - **Mesh size**: 70 >
+   - **Mesh size**: 70 mm to maximum mesh sizes used ( 70 >= ) 
 
 #### EFLALO data  must include fishing trips landing information by species captured : 
 
