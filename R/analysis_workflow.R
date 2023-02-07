@@ -75,12 +75,24 @@ library(vmstools)
     
     # 1.3.4 (OPTIONAL)  If not done before, aggregate total landings and value by COD and OTHERS species categories
     
+    spec_kg = c("LE_KG_COD","LE_KG_NEP","LE_KG_HKE","LE_KG_LEZ","LE_KG_HAD","LE_KG_WHG")
+    spec_euro = c("LE_EURO_COD","LE_EURO_NEP","LE_EURO_HKE","LE_EURO_LEZ","LE_EURO_HAD","LE_EURO_WHG")
     
-    
-    eflalo_cod =  eflalo_cod%>%
-                  mutate(LE_KG_OTHERS   = rowSums( select(., starts_with("LE_KG") , -"LE_KG_COD")    , na.rm = T ) ) %>%        ## run across species le_kg except LE_KG_COD
-                  mutate(LE_EURO_OTHERS = rowSums( select(., starts_with("LE_EURO"), -"LE_EURO_COD") , na.rm = T ) ) %>%        ## run across species le_euro except LE_EURO_COD
-                  select( -starts_with("LE_EURO") , -starts_with( "LE_KG") , "LE_KG_COD","LE_EURO_COD","LE_KG_OTHERS", "LE_EURO_OTHERS"  ) %>%   
+    eflalo_cod =  eflalo_cod%>% 
+                  #mutate(LE_KG_OTHERS   = rowSums( select(., starts_with("LE_KG") , -"LE_KG_COD")    , na.rm = T ) ) %>%        ## run across species le_kg except LE_KG_COD
+                  mutate(LE_KG_OTHERS   = rowSums( select(., starts_with("LE_KG") , -spec_kg)    , na.rm = T ) ) %>%
+                  #mutate(LE_EURO_OTHERS = rowSums( select(., starts_with("LE_EURO"), -"LE_EURO_COD") , na.rm = T ) ) %>%        ## run across species le_euro except LE_EURO_COD
+                  mutate(LE_EURO_OTHERS = rowSums( select(., starts_with("LE_EURO"), -spec_euro) , na.rm = T ) ) %>%        ## run across species le_euro except LE_EURO_COD
+                  # select( -starts_with("LE_EURO") , -starts_with( "LE_KG") ,
+                  #         "LE_KG_COD","LE_EURO_COD",
+                  #         "LE_KG_NEP","LE_EURO_NEP",
+                  #         "LE_KG_HKE","LE_EURO_HKE",
+                  #         "LE_KG_LEZ","LE_EURO_LEZ",
+                  #         "LE_KG_HAD","LE_EURO_HAD",
+                  #         "LE_KG_WHG","LE_EURO_WHG",
+                  select( -starts_with("LE_EURO") , -starts_with( "LE_KG") ,
+                          spec_kg, spec_euro,
+                          "LE_KG_OTHERS", "LE_EURO_OTHERS"  ) %>%   
                   as.data.frame() 
     
     
