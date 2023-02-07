@@ -18,7 +18,7 @@ Repository with the  code required for the analysis of fishing activity by trawl
    - **Area of Interest**: 27.7e to 27.7.
    - **Time period**: 2017 - 2021
    - **Gear**: bottom otter trawler gears ( OTB, OT, OTT, PTB )
-   - **Mesh size**: 70 - 119 and over
+   - **Mesh size**: 70 >
 
 #### EFLALO data  must include fishing trips landing information by species captured : 
 
@@ -33,7 +33,11 @@ Repository with the  code required for the analysis of fishing activity by trawl
    
   
   
-####  1. Load and format EFLALO & TACSAT
+####  1. Load and format EFLALO & TACSAT: 
+
+   - Create in EFLALO the mesh size categories field: '70-99' and '100 >'
+   - Select EFLALO trips with any COD capture 
+   - Standardize the dates formats both in EFLALO and TACSAT ( benefit analysis stage ) 
  
 ##  2. VMS & LOGBOOK LINKED ANALYSIS: COUPLE CATCHES TO VMS LOCATIONS  
  
