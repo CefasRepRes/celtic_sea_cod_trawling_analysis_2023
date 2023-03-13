@@ -2,6 +2,11 @@
 
 Repository with the  code required for the analysis of fishing activity by trawler vessels capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
 
+DATASET OUTPUTS OF THIS WORKFLOW: 
+
+   - TABLE 1: Logbook effort and capture indicators aggregated by year, quarter, ices rectangle and mesh range. 
+   - TABLE 2: VMS linked to logbook effort and capture indicators aggregated by year, quarter, C-SQaure 0.05 and mesh range. 
+
 > The analysis have been structured in the following sections and processes:
 
 
@@ -51,10 +56,36 @@ Repository with the  code required for the analysis of fishing activity by trawl
   
   
     
-##  3. OUTPUT AGGREGATION & FORMATTING                       
+##  3. OUTPUT AGGREGATION & FORMATTING     
+
+ ### TABLE 1
+    
+ ### Table 1 output aggregates the  logbook datatset (eflalo_ot_2017_2021) with the following structure: 
+    
+#### Categories for aggregation  
+    
+   - **Year**: Temporal resolution of the final output 
+   - **Quarter**: Temporal resolution of the final output 
+   - **ICES Rectangle**: The spatial resolution of the aggregated output uses the reported ICES statistical rectangle in the e-logbooks.
+   - **Mesh size range**: The 2 mesh size categories ('70-99' & '100-119+') enable the spatio-temporal fishing activity trend analysis and comparison of the activity of the 2 fleet segments 
+   - **Country**: GBR  or EU ( or individual member states ) . To analyse the fishing activity by fleet country . 
+    
+#### Fishing activity indicators by category:
+    
+   - **effort**: Total fishing effort (in days)  by aggregation category
+   - **effort*kwh**: Total fishing effort (in days) * engine power (kwh)  by aggregation category
+   - **kg_cod/others**: Total cod/others weight (kg) captured by above category
+   - **val_cod/others**: Total cod/others 1st sales value (euro) by above category
+   - **avg_len**:  Average length of the vessels by aggregation category
+   
+
+        
+ ####   Aggregate the data by defined categories and create the TABLE 1 final output
     
     
-This section transforms the raw VMS locations with logbooks indicators (tacsatEflalo) into an aggregated dataset with the following structure: 
+ ### TABLE 2
+    
+ ### Table 2 output aggregates the  VMS linked to logbooks  (tacsatEflalo) with the following structure: 
     
 #### Categories for aggregation  
     
@@ -74,5 +105,5 @@ This section transforms the raw VMS locations with logbooks indicators (tacsatEf
    - **avg_sp**:  Average fishing speeds of the vessels by aggregation category
 
         
- #### 3.2 Aggregate the data by defined categories and create the final output
+ ####  Aggregate the data by defined categories and create the TABLE 2 final output
     

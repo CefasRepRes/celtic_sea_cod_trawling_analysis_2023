@@ -316,7 +316,7 @@ library(vmstools)
       group_by(si_year, si_year_q,csquare,  mesh_range,ve_cou  )%>%
       summarise(
         avg_sp = mean(si_sp), 
-        #avg_len = mean(ve_len),
+        avg_len = mean(ve_len),
         effort_h = sum(intv), 
         effort_kwh = sum(intv*ve_kw),
         kg_cod = sum(le_kg_cod, na.rm = T), val_cod = sum(le_euro_cod, na.rm = T), 
