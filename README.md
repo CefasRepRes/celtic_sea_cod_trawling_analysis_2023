@@ -2,7 +2,11 @@
 
 Repository with the  code required for the analysis of fishing activity by trawler vessels capturing cod in the Celtic Sea area (27.7.e - 27.7.k).
 
-DATASET OUTPUTS OF THIS WORKFLOW: 
+RECOMMENDED WORKFLOW: 
+
+https://github.com/CefasRepRes/celtic_sea_cod_trawling_analysis_2023/blob/main/R/analysis_workflow.R
+
+OUTPUTS OF THE PROCESSING WORKFLOW: 
 
    - TABLE 1: Logbook effort and capture indicators aggregated by year, quarter, ices rectangle and mesh range. 
    - TABLE 2: VMS linked to logbook effort and capture indicators aggregated by year, quarter, C-SQaure 0.05 and mesh range. 
