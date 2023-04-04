@@ -31,7 +31,8 @@ library(vmstools)
 ## EFLALO data  must include fishing trips landing information by species captured : 
 
   ## - Total weight (kg) and value (euro) of landings by species landed 
-  ## - The weight (LE_KG) and value (LE_EURO) fields must be present for cod (LE_KG_COD, LE_EURO_COD) and all the other species combined (LE_KG_OTHERS, LE_EURO_OTHERS).
+  ## - The weight (LE_KG) and value (LE_EURO) fields must be present for cod (LE_KG_COD, LE_EURO_COD), nephrops (NEP), angler fish (ANF), hake (HKE),
+       ## lemon sole (LEZ) , haddock (HAD) , whiting (WHI)  and all the other species combined (LE_KG_OTHERS, LE_EURO_OTHERS).
       ## - In addition to cod captures information, tehre is required weight and value for the following species: 
                   # -  Haddock , whiting, anglerfish , nephrops , megrim and hake. The rest of the species captures must be aggregated into OTHERS category. 
       ## - If these haven't been aggregated in advance, a code is provided to obtain it in line 76
